@@ -3,3 +3,12 @@ __pycache__/
 *.pyc
 venv/
 data/
+# Python
+data/phase4_embeddings.json
+data/tdr/
+qdrant_data/
+venv/
+__pycache__/
+.env
+*.pyc
+*.pyo
