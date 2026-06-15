@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+pydantic
+qdrant-client
+requests
+langchain-text-splitters
+pymupdf
+pytesseract
+python-docx
+beautifulsoup4
+pandas
+groq
+python-dotenv
+sentence-transformers

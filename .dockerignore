@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.git/
+data/phase4_embeddings.json
+frontend/node_modules/
+frontend/.vite/
+*.log

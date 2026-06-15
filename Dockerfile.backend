@@ -1,0 +1,24 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
+RUN pip install --no-cache-dir --timeout=300 --retries=5 -r requirements.txt
+
+ARG HF_TOKEN
+ENV HF_TOKEN=${HF_TOKEN}
+RUN python -c "\
+import os; \
+from huggingface_hub import login; \
+token = os.environ.get('HF_TOKEN'); \
+print('Token:', token[:8] if token else 'NONE'); \
+login(token=token) if token else None; \
+from sentence_transformers import SentenceTransformer; \
+SentenceTransformer('intfloat/multilingual-e5-base')"
+
+COPY . .
+
+CMD ["uvicorn", "backend.api.phase9_api:app", "--host", "0.0.0.0", "--port", "8000"]
