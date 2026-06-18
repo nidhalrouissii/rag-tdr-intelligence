@@ -196,7 +196,7 @@ def generer_reponse(question: str, chunks: list[dict]) -> str:
 SOURCE {i}
 Titre: {c['titre']}
 Pays: {c['pays']}
-Texte: {c['texte'][:400]}
+Texte: {c['texte'][:800]}
 """
 
     prompt = f"""
@@ -218,7 +218,7 @@ QUESTION:
 Réponse claire et structurée:
 """
 
-    return appeler_llm(prompt, temperature=0.2, max_tokens=800)
+    return appeler_llm(prompt, temperature=0.2, max_tokens=1500)
 
 
 # ============================================================
